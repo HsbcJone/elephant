@@ -1,7 +1,8 @@
 package com.elephant.server.runner
 
 import com.elephant.server.SpringBootScalaIntegration
-import com.elephant.server.action.BaseAction
+import com.elephant.server.action.{Base, BaseAction}
+import com.elephant.server.workflow.BaseWorkflow
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.support.AbstractApplicationContext
 import org.springframework.context.{ApplicationContext, ApplicationContextAware}
@@ -16,15 +17,24 @@ class InitRunner extends CommandLineRunner with  ApplicationContextAware  {
   var context:AbstractApplicationContext=null
   override def run(argss: String*): Unit = {
     SpringBootScalaIntegration.args.foreach(println(_))
-    val actionName="CountAction"
+    var componetName=SpringBootScalaIntegration.args(0)
+    var componetType=SpringBootScalaIntegration.args(1)
+    var flag=true
     try {
-      val ation = context.getBean(actionName).asInstanceOf[BaseAction]
-      ation.runTask(SpringBootScalaIntegration.args: _*)
+      var base:Base=null
+      if("action".equalsIgnoreCase(componetType)){
+       base= context.getBean(componetName).asInstanceOf[BaseAction]
+      }else{
+        base= context.getBean(componetName).asInstanceOf[BaseWorkflow]
+      }
+       flag=base.run(SpringBootScalaIntegration.args: _*)
     } catch {
           //TODO 自定义Exception
       case e:Exception => throw new RuntimeException(e.getMessage)
     } finally {
-      context.close()
+        //context.close()
+        println("context need be stop....")
+      context.stop()
     }
   }
 
