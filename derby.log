@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Jan 10 07:42:04 GMT+08:00 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0176-e987-4193-00001185c8e8 
+on database directory memory:/Users/mengxp/Desktop/code/elephant/testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/mengxp/Desktop/env/maven-repos/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_271-b09
+user.dir=/Users/mengxp/Desktop/code/elephant
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
