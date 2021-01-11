@@ -19,7 +19,7 @@ class FullImportWorkflow  extends BaseWorkflow {
     val wc=new WorkflowInfo
     val actionInfos=List(
       ActionInfo("sqoop1","t_project","t_project_mxp"),
-      ActionInfo("sqoop2","t_user","t_user_mxp")
+      ActionInfo("sqoop2","t_project","t_user_mxp")
     )
     wc.actionInfos=actionInfos
     workflowInfos.+=(wc)
